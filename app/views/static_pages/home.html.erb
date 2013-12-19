@@ -1,0 +1,35 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="span8">
+      <h3>Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to Winzo!</h1>
+    <p>
+     <bold>Winzo</bold> is a social network where people buy and sell things.</br>
+     Posting a product is as easy as updating your social media status.</br>
+     <bold>How</bold> do you get funds?</br>
+     Deposit funds to your Winzo account.</br>
+     OR</br>
+     Earn funds through sales, paid surveys, ad revenues.</br>
+     <a href="">Click here</a> to view our Advertisement and Privacy Policy.
+
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  </div>
+
+  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<% end %>
