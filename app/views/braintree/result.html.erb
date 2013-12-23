@@ -1,0 +1,24 @@
+<%
+    result = Braintree::Transaction.sale(
+  :amount => "1000.00",
+  :credit_card => {
+    :number => "5105105105105100",
+    :expiration_month => "05",
+    :expiration_year => "12"
+  }
+) 
+%>  	
+<h1> Transaction Result </h1>
+  <% if result.success? %>
+  <%= "Transaction ID: #{result.transaction.id}" %>
+ <% # status will be authorized or submitted_for_settlement %>
+  <%= "Transaction Status: #{result.transaction.status}" %>
+  <% else %>
+  <%= "Message: #{result.message}" %>
+  <% if result.transaction.nil? %>
+  <%=  result.errors %>
+   <% else %>
+  <%=  "Transaction ID: #{result.transaction.id}" %>
+   <%= "Transaction Status: #{result.transaction.status}" %>
+  <% end %>
+ <% end %>

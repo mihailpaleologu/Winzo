@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  get "braintree/result"
+
   match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
 
   match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
@@ -24,9 +26,8 @@ SampleApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
-  match 'payment', to: 'payments#payment'
-  match 'relay_response', to: 'payments#relay_response'
-  match 'receipt', to: 'payments#receipt'
+  match 'transaction_result', to: 'braintree#result'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
