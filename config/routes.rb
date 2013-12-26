@@ -1,11 +1,6 @@
 SampleApp::Application.routes.draw do
-  get "braintree/result"
-
-  match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
-
-  match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
-
-  match '/payments/receipt', :to => 'payments#receipt', :as => 'payments_receipt', :via => [:get]
+  resources :wallets
+  root to: 'static_pages#home'
 
   resources :users do
     member do
@@ -16,8 +11,6 @@ SampleApp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
-  root to: 'static_pages#home'
-
   match '/signup',   to: 'users#new'
   match '/signin',   to: 'sessions#new'
   match '/signout',  to: 'sessions#destroy', via: :delete
@@ -26,7 +19,7 @@ SampleApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
-  match 'transaction_result', to: 'braintree#result'
+ 
 
 
   # The priority is based upon order of creation:

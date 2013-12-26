@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520230206) do
+ActiveRecord::Schema.define(:version => 20131226171836) do
 
   create_table "microposts", :force => true do |t|
     t.string   "title"
@@ -47,5 +47,11 @@ ActiveRecord::Schema.define(:version => 20120520230206) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "wallets", :force => true do |t|
+    t.integer  "balance"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

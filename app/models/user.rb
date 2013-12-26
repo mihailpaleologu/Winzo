@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  has_one :wallet
+
+  # Show user account balance
 
   def following?(other_user)
     relationships.find_by_followed_id(other_user.id)

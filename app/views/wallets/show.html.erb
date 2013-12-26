@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @wallet.user_id %>
+</p>
+
+<p>
+  <b>Balance:</b>
+  <%= @wallet.balance %>
+</p>
+
+
+<%= link_to 'Edit', edit_wallet_path(@wallet) %> |
+<%= link_to 'Back', wallets_path %>

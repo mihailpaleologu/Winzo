@@ -1,3 +1,5 @@
 class Wallet < ActiveRecord::Base
-  attr_accessible :balance, :user_id
+  attr_accessible :balance
+  belongs_to :user
+
 end
